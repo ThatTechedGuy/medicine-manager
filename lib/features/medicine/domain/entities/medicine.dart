@@ -6,9 +6,7 @@ class Medicine extends Equatable {
   final String name;
   final int quantity;
   final int minimumQuantity;
-  final int quantitySold;
-  final int quantityRequired;
-  final int avgSale;
+  final double avgSalePerWeek;
   final double price;
   final String description;
   final Vendor vendor;
@@ -21,9 +19,7 @@ class Medicine extends Equatable {
     this.name,
     this.quantity,
     this.minimumQuantity,
-    this.quantitySold,
-    this.quantityRequired,
-    this.avgSale,
+    this.avgSalePerWeek,
     this.price,
     this.description,
     this.vendor,
@@ -38,8 +34,7 @@ class Medicine extends Equatable {
         name,
         quantity,
         minimumQuantity,
-        quantitySold,
-        avgSale,
+        avgSalePerWeek,
         price,
         description,
         vendor,
