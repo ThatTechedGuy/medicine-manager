@@ -6,31 +6,39 @@ import 'package:medicine_manager/features/medicine/presentation/pages/transactio
 class MedicinePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          bottom: TabBar(
-            tabs: [
-              Tab(
-                text: 'Dashboard',
+    return Scaffold(
+      body: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: TabBar(
+              tabs: [
+                Tab(
+                  text: 'Dashboard',
+                ),
+                Tab(
+                  text: 'Statistics',
+                ),
+                Tab(
+                  text: 'Transaction',
+                ),
+              ],
+            ),
+            title: Text(
+              'Medicine Manager',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
               ),
-              Tab(
-                text: 'Statistics',
-              ),
-              Tab(
-                text: 'Transaction',
-              ),
+            ),
+            centerTitle: true,
+          ),
+          body: TabBarView(
+            children: [
+              Dashboard(),
+              Transaction(),
+              Statistics(),
             ],
           ),
-          title: Text('Medicine Manager'),
-        ),
-        body: TabBarView(
-          children: [
-            Dashboard(),
-            Transaction(),
-            Statistics(),
-          ],
         ),
       ),
     );

@@ -15,44 +15,50 @@ class _ExpandableListViewState extends State<ExpandableListView> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+
     return Container(
       margin: EdgeInsets.symmetric(vertical: 1.0),
       child: Column(
         children: <Widget>[
           Container(
+            height: height * 0.08,
             color: Colors.blue,
             padding: EdgeInsets.symmetric(horizontal: 5.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 IconButton(
-                    icon: Container(
-                      height: 50.0,
-                      width: 50.0,
-                      decoration: BoxDecoration(
-                        color: Colors.orange,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Center(
-                        child: Icon(
-                          expandFlag
-                              ? Icons.keyboard_arrow_up
-                              : Icons.keyboard_arrow_down,
-                          color: Colors.white,
-                          size: 30.0,
-                        ),
+                  icon: Container(
+                    height: 50.0,
+                    width: 50.0,
+                    decoration: BoxDecoration(
+                      color: Colors.orange,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
+                      child: Icon(
+                        expandFlag
+                            ? Icons.keyboard_arrow_up
+                            : Icons.keyboard_arrow_down,
+                        color: Colors.white,
+                        size: 30.0,
                       ),
                     ),
-                    onPressed: () {
-                      setState(() {
+                  ),
+                  onPressed: () {
+                    setState(
+                      () {
                         expandFlag = !expandFlag;
-                      });
-                    }),
+                      },
+                    );
+                  },
+                ),
                 Text(
                   widget.title,
                   style: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.white),
-                )
+                ),
               ],
             ),
           ),
