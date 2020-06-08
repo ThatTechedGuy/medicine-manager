@@ -38,7 +38,7 @@ class Medicine extends Equatable {
         price,
         description,
         vendor,
-          lastSold,
+        lastSold,
         expiryDate,
         hasExpired
       ];

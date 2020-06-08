@@ -24,14 +24,167 @@ class CustomActionButton extends StatelessWidget {
       shape: CircleBorder(),
       children: [
         SpeedDialChild(
-            child: Icon(
-              Icons.add,
-              color: Colors.black,
-            ),
-            backgroundColor: Colors.red,
-            label: 'Add Medicine',
-            labelStyle: TextStyle(fontSize: 18.0),
-            onTap: () => print('FIRST CHILD')),
+          child: Icon(
+            Icons.add,
+            color: Colors.black,
+          ),
+          backgroundColor: Colors.red,
+          label: 'Add Medicine',
+          labelStyle: TextStyle(fontSize: 18.0),
+          onTap: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return Container(
+                  color: Color(0xFF757575),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15),
+                      ),
+                      color: Colors.white,
+                    ),
+                    child: ListView(
+                      children: <Widget>[
+                        Text('Enter the Medicine details : '),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text('ID :'),
+                              Expanded(
+                                child: Container(
+                                  child: TextField(),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text('Name :'),
+                              Expanded(
+                                child: Container(
+                                  child: TextField(),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text('ID :'),
+                              Expanded(
+                                child: Container(
+                                  child: TextField(),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text('ID :'),
+                              Expanded(
+                                child: Container(
+                                  child: TextField(),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text('ID :'),
+                              Expanded(
+                                child: Container(
+                                  child: TextField(),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text('ID :'),
+                              Expanded(
+                                child: Container(
+                                  child: TextField(),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text('ID :'),
+                              Expanded(
+                                child: Container(
+                                  child: TextField(),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text('ID :'),
+                              Expanded(
+                                child: Container(
+                                  child: TextField(),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text('ID :'),
+                              Expanded(
+                                child: Container(
+                                  child: TextField(),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text('ID :'),
+                              Expanded(
+                                child: Container(
+                                  child: TextField(),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+        ),
         SpeedDialChild(
           child: Icon(Icons.verified_user, color: Colors.black),
           backgroundColor: Colors.blue,

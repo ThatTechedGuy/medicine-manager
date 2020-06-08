@@ -7,24 +7,26 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      body: Column(
-        children: <Widget>[
-          SizedBox(
-            height: height * 0.1,
-          ),
-          SizedBox(
-            height: height * 0.7,
-            child: ListView.builder(
-              itemBuilder: (BuildContext context, int index) {
-                return ExpandableListView(title: "Title $index");
-              },
-              itemCount: 5,
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: <Widget>[
+            SizedBox(
+              height: height * 0.1,
             ),
-          ),
-        ],
+            SizedBox(
+              height: height * 0.7,
+              child: ListView.builder(
+                itemBuilder: (BuildContext context, int index) {
+                  return ExpandableListView(title: "Title $index");
+                },
+                itemCount: 5,
+              ),
+            ),
+          ],
+        ),
+        floatingActionButton: CustomActionButton(),
       ),
-      floatingActionButton: CustomActionButton(),
     );
   }
 }
