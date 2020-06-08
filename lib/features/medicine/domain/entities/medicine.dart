@@ -10,7 +10,6 @@ class Medicine extends Equatable {
   final double price;
   final String description;
   final Vendor vendor;
-  final DateTime lastSold;
   final DateTime expiryDate;
   final bool hasExpired;
 
@@ -23,7 +22,6 @@ class Medicine extends Equatable {
     this.price,
     this.description,
     this.vendor,
-    this.lastSold,
     this.expiryDate,
     this.hasExpired,
   });
@@ -38,7 +36,6 @@ class Medicine extends Equatable {
         price,
         description,
         vendor,
-        lastSold,
         expiryDate,
         hasExpired
       ];

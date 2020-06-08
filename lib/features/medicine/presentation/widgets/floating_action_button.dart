@@ -1,7 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:medicine_manager/features/medicine/presentation/widgets/bottom_sheet_design.dart';
 
 class CustomActionButton extends StatelessWidget {
+  final List<String> addMedicineFields = [
+    'Id :  ',
+    'Name :  ',
+    'Quantity :  ',
+    'Minimum Quantity :  ',
+    'Average Sale Per Week :  ',
+    'Price :  ',
+    'Description :  ',
+    'Vendor :  ',
+    'Expiry Date :  ',
+    'Has Expired :  '
+  ];
+
+  final List<String> addVendorFields = [
+    'Id :  ',
+    'Name :  ',
+    'Address : ',
+    'Phone Number :  ',
+    'Medicine List :  '
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SpeedDial(
@@ -35,151 +57,8 @@ class CustomActionButton extends StatelessWidget {
             showModalBottomSheet(
               context: context,
               builder: (context) {
-                return Container(
-                  color: Color(0xFF757575),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15),
-                      ),
-                      color: Colors.white,
-                    ),
-                    child: ListView(
-                      children: <Widget>[
-                        Text('Enter the Medicine details : '),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: <Widget>[
-                              Text('ID :'),
-                              Expanded(
-                                child: Container(
-                                  child: TextField(),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: <Widget>[
-                              Text('Name :'),
-                              Expanded(
-                                child: Container(
-                                  child: TextField(),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: <Widget>[
-                              Text('ID :'),
-                              Expanded(
-                                child: Container(
-                                  child: TextField(),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: <Widget>[
-                              Text('ID :'),
-                              Expanded(
-                                child: Container(
-                                  child: TextField(),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: <Widget>[
-                              Text('ID :'),
-                              Expanded(
-                                child: Container(
-                                  child: TextField(),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: <Widget>[
-                              Text('ID :'),
-                              Expanded(
-                                child: Container(
-                                  child: TextField(),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: <Widget>[
-                              Text('ID :'),
-                              Expanded(
-                                child: Container(
-                                  child: TextField(),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: <Widget>[
-                              Text('ID :'),
-                              Expanded(
-                                child: Container(
-                                  child: TextField(),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: <Widget>[
-                              Text('ID :'),
-                              Expanded(
-                                child: Container(
-                                  child: TextField(),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: <Widget>[
-                              Text('ID :'),
-                              Expanded(
-                                child: Container(
-                                  child: TextField(),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                return BottomSheetDesign(
+                  option: addMedicineFields,
                 );
               },
             );
@@ -190,14 +69,30 @@ class CustomActionButton extends StatelessWidget {
           backgroundColor: Colors.blue,
           label: 'Add vendor',
           labelStyle: TextStyle(fontSize: 18.0),
-          onTap: () => print('SECOND CHILD'),
+          onTap: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return BottomSheetDesign(
+                  option: addVendorFields,
+                );
+              },
+            );
+          },
         ),
         SpeedDialChild(
           child: Icon(Icons.update, color: Colors.black),
           backgroundColor: Colors.green,
           label: 'Update Medicines',
           labelStyle: TextStyle(fontSize: 18.0),
-          onTap: () => print('THIRD CHILD'),
+          onTap: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return BottomSheetDesign();
+              },
+            );
+          },
         ),
         SpeedDialChild(
           child: Icon(
@@ -207,7 +102,14 @@ class CustomActionButton extends StatelessWidget {
           backgroundColor: Colors.yellow,
           label: 'Update Vendor',
           labelStyle: TextStyle(fontSize: 18.0),
-          onTap: () => print('FOURTH CHILD'),
+          onTap: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return BottomSheetDesign();
+              },
+            );
+          },
         ),
       ],
     );

@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:medicine_manager/features/medicine/presentation/pages/dashboard.dart';
 import 'package:medicine_manager/features/medicine/presentation/pages/statistics.dart';
 import 'package:medicine_manager/features/medicine/presentation/pages/transaction.dart';
+import 'package:medicine_manager/features/medicine/presentation/widgets/floating_action_button.dart';
 
 class MedicinePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: DefaultTabController(
-        length: 3,
+    return DefaultTabController(
+      length: 3,
+      child: SafeArea(
         child: Scaffold(
+          resizeToAvoidBottomPadding: false,
           appBar: AppBar(
             bottom: TabBar(
               tabs: [
@@ -39,6 +41,7 @@ class MedicinePage extends StatelessWidget {
               Statistics(),
             ],
           ),
+          floatingActionButton: CustomActionButton(),
         ),
       ),
     );

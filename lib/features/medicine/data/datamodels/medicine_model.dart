@@ -35,7 +35,6 @@ class MedicineModel extends Medicine {
           price: price,
           description: description,
           vendor: vendor,
-          lastSold: lastSold,
           expiryDate: expiryDate,
           hasExpired: hasExpired,
         );
