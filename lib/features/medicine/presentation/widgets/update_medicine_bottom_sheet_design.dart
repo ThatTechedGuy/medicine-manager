@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:medicine_manager/features/medicine/presentation/widgets/name_input.dart';
-import 'package:medicine_manager/features/medicine/presentation/widgets/add_medicine_slider.dart';
+import 'package:medicine_manager/features/medicine/presentation/widgets/update_name_input.dart';
+import 'package:medicine_manager/features/medicine/presentation/widgets/update_medicine_slider.dart';
 import 'package:intl/intl.dart';
 
-class AddMedicineBottomSheetDesign extends StatefulWidget {
+class UpdateMedicineBottomSheetDesign extends StatefulWidget {
   @override
-  _AddMedicineBottomSheetDesignState createState() =>
-      _AddMedicineBottomSheetDesignState();
+  _UpdateMedicineBottomSheetDesignState createState() =>
+      _UpdateMedicineBottomSheetDesignState();
 }
 
-class _AddMedicineBottomSheetDesignState
-    extends State<AddMedicineBottomSheetDesign> {
+class _UpdateMedicineBottomSheetDesignState
+    extends State<UpdateMedicineBottomSheetDesign> {
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
 
   @override
@@ -36,7 +36,7 @@ class _AddMedicineBottomSheetDesignState
               padding: EdgeInsets.all(18.0),
               alignment: Alignment.topLeft,
               child: Text(
-                'New Medicine',
+                'Update Medicine',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 65,
@@ -50,25 +50,39 @@ class _AddMedicineBottomSheetDesignState
                 key: _fbKey,
                 child: ListView(
                   children: <Widget>[
-                    NameInput(
+                    Container(
+                      padding: EdgeInsets.all(10.0),
+                      child: FormBuilderDropdown(
+                        attribute: 'ID',
+                        decoration: InputDecoration(labelText: 'ID'),
+                        // initialValue: 'Male',
+                        hint: Text('Select ID'),
+                        validators: [FormBuilderValidators.required()],
+                        //TODO : Fill items list with available medicines
+                        items: ['Male', 'Female', 'Other']
+                            .map((gender) => DropdownMenuItem(
+                                value: gender, child: Text("$gender")))
+                            .toList(),
+                      ),
+                    ),
+                    UpdateNameInput(
                       field: 'Name',
                     ),
-                    NameInput(
+                    UpdateNameInput(
                       field: 'Description',
                     ),
-                    NameInput(
+                    UpdateNameInput(
                       field: 'Price',
                     ),
-                    AddMedicineSlider(
+                    UpdateMedicineSlider(
                       field: 'Quantity',
                     ),
-                    AddMedicineSlider(
+                    UpdateMedicineSlider(
                       field: 'Minimum Quantity',
                     ),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: FormBuilderDateTimePicker(
-                        validator: FormBuilderValidators.required(),
                         attribute: "date",
                         inputType: InputType.date,
                         format: DateFormat("yyyy-MM-dd"),
@@ -82,7 +96,6 @@ class _AddMedicineBottomSheetDesignState
                         decoration: InputDecoration(labelText: 'Vendor'),
                         // initialValue: 'Male',
                         hint: Text('Select Vendor'),
-                        validators: [FormBuilderValidators.required()],
                         //TODO : Fill items list with available vendors
                         items: ['Male', 'Female', 'Other']
                             .map((gender) => DropdownMenuItem(

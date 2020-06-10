@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:medicine_manager/features/medicine/presentation/widgets/add_medicine_bottom_sheet_design.dart';
+import 'package:medicine_manager/features/medicine/presentation/widgets/add_vendor_bottom_sheet_design.dart';
+import 'package:medicine_manager/features/medicine/presentation/widgets/transactions_bottom_sheet_design.dart';
+import 'package:medicine_manager/features/medicine/presentation/widgets/update_medicine_bottom_sheet_design.dart';
+import 'package:medicine_manager/features/medicine/presentation/widgets/update_vendor_bottom_sheet_design.dart';
 
 class CustomActionButton extends StatelessWidget {
-
   final List<String> addVendorFields = [
     'Id :  ',
     'Name :  ',
@@ -34,17 +37,66 @@ class CustomActionButton extends StatelessWidget {
       children: [
         SpeedDialChild(
           child: Icon(
+            Icons.attach_money,
+            color: Colors.black,
+          ),
+          backgroundColor: Colors.orange,
+          label: 'Make Sale',
+          labelStyle: TextStyle(fontSize: 18.0, color: Colors.black),
+          onTap: () {
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              builder: (context) {
+                return Container(
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  child: TransactionsBottomSheetDesign(
+                    transactionName: 'Make Sale',
+                  ),
+                );
+              },
+            );
+          },
+        ),
+        SpeedDialChild(
+          child: Icon(
+            Icons.add_shopping_cart,
+            color: Colors.black,
+          ),
+          backgroundColor: Colors.pink,
+          label: 'Order',
+          labelStyle: TextStyle(fontSize: 18.0, color: Colors.black),
+          onTap: () {
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              builder: (context) {
+                return Container(
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  child: TransactionsBottomSheetDesign(
+                    transactionName: 'Order',
+                  ),
+                );
+              },
+            );
+          },
+        ),
+        SpeedDialChild(
+          child: Icon(
             Icons.add,
             color: Colors.black,
           ),
           backgroundColor: Colors.red,
           label: 'Add Medicine',
-          labelStyle: TextStyle(fontSize: 18.0,color : Colors.black),
+          labelStyle: TextStyle(fontSize: 18.0, color: Colors.black),
           onTap: () {
             showModalBottomSheet(
               context: context,
+              isScrollControlled: true,
               builder: (context) {
-                return AddMedicineBottomSheetDesign(
+                return Container(
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  child: AddMedicineBottomSheetDesign(),
                 );
               },
             );
@@ -58,8 +110,12 @@ class CustomActionButton extends StatelessWidget {
           onTap: () {
             showModalBottomSheet(
               context: context,
+              isScrollControlled: true,
               builder: (context) {
-                return Container();
+                return Container(
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  child: AddVendorBottomSheetDesign(),
+                );
               },
             );
           },
@@ -71,9 +127,13 @@ class CustomActionButton extends StatelessWidget {
           labelStyle: TextStyle(fontSize: 18.0),
           onTap: () {
             showModalBottomSheet(
+              isScrollControlled: true,
               context: context,
               builder: (context) {
-                return Container();
+                return Container(
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  child: UpdateMedicineBottomSheetDesign(),
+                );
               },
             );
           },
@@ -88,9 +148,13 @@ class CustomActionButton extends StatelessWidget {
           labelStyle: TextStyle(fontSize: 18.0),
           onTap: () {
             showModalBottomSheet(
+              isScrollControlled: true,
               context: context,
               builder: (context) {
-                return Container();
+                return Container(
+                  child: UpdateVendorBottomSheetDesign(),
+                  height: MediaQuery.of(context).size.height * 0.8,
+                );
               },
             );
           },

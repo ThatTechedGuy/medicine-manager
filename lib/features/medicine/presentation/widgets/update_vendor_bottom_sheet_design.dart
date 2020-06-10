@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:medicine_manager/features/medicine/presentation/widgets/name_input.dart';
-import 'package:medicine_manager/features/medicine/presentation/widgets/add_medicine_slider.dart';
-import 'package:intl/intl.dart';
+import 'package:medicine_manager/features/medicine/presentation/widgets/update_name_input.dart';
 
-class AddMedicineBottomSheetDesign extends StatefulWidget {
+class UpdateVendorBottomSheetDesign extends StatefulWidget {
   @override
-  _AddMedicineBottomSheetDesignState createState() =>
-      _AddMedicineBottomSheetDesignState();
+  _UpdateMedicineBottomSheetDesignState createState() =>
+      _UpdateMedicineBottomSheetDesignState();
 }
 
-class _AddMedicineBottomSheetDesignState
-    extends State<AddMedicineBottomSheetDesign> {
+class _UpdateMedicineBottomSheetDesignState
+    extends State<UpdateVendorBottomSheetDesign> {
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
 
   @override
@@ -36,7 +34,7 @@ class _AddMedicineBottomSheetDesignState
               padding: EdgeInsets.all(18.0),
               alignment: Alignment.topLeft,
               child: Text(
-                'New Medicine',
+                'Update Vendor',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 65,
@@ -50,52 +48,36 @@ class _AddMedicineBottomSheetDesignState
                 key: _fbKey,
                 child: ListView(
                   children: <Widget>[
-                    NameInput(
-                      field: 'Name',
-                    ),
-                    NameInput(
-                      field: 'Description',
-                    ),
-                    NameInput(
-                      field: 'Price',
-                    ),
-                    AddMedicineSlider(
-                      field: 'Quantity',
-                    ),
-                    AddMedicineSlider(
-                      field: 'Minimum Quantity',
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: FormBuilderDateTimePicker(
-                        validator: FormBuilderValidators.required(),
-                        attribute: "date",
-                        inputType: InputType.date,
-                        format: DateFormat("yyyy-MM-dd"),
-                        decoration: InputDecoration(labelText: 'Expiry Date'),
-                      ),
-                    ),
                     Container(
                       padding: EdgeInsets.all(10.0),
                       child: FormBuilderDropdown(
-                        attribute: 'Vendor',
-                        decoration: InputDecoration(labelText: 'Vendor'),
+                        attribute: 'ID',
+                        decoration: InputDecoration(labelText: 'ID'),
                         // initialValue: 'Male',
-                        hint: Text('Select Vendor'),
+                        hint: Text('Select ID'),
                         validators: [FormBuilderValidators.required()],
-                        //TODO : Fill items list with available vendors
+                        //TODO : Fill items list with available medicines
                         items: ['Male', 'Female', 'Other']
                             .map((gender) => DropdownMenuItem(
                                 value: gender, child: Text("$gender")))
                             .toList(),
                       ),
                     ),
+                    UpdateNameInput(
+                      field: 'Name',
+                    ),
+                    UpdateNameInput(
+                      field: 'Email',
+                    ),
+                    UpdateNameInput(
+                      field: 'Phone Number',
+                    ),
+                    UpdateNameInput(
+                      field: 'Address',
+                    ),
                   ],
                 ),
               ),
-            ),
-            SizedBox(
-              height: height * 0.02,
             ),
             FlatButton(
               padding: EdgeInsets.symmetric(horizontal: 150, vertical: 16),
