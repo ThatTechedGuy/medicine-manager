@@ -11,7 +11,7 @@ class MedicinePage extends StatelessWidget {
       length: 3,
       child: SafeArea(
         child: Scaffold(
-          resizeToAvoidBottomPadding: false,
+          resizeToAvoidBottomPadding: true,
           appBar: AppBar(
             bottom: TabBar(
               tabs: [

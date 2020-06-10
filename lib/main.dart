@@ -10,6 +10,16 @@ class MedicineManager extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.light().copyWith(
+        accentColor: Colors.black,
+        primaryColor: Colors.black,
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          errorStyle: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       title: 'Medicine Manager',
       home: MedicinePage(),
     );
