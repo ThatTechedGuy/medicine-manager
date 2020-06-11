@@ -1,28 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:medicine_manager/features/medicine/presentation/pages/dashboard.dart';
-import 'package:medicine_manager/features/medicine/presentation/pages/statistics.dart';
-import 'package:medicine_manager/features/medicine/presentation/pages/transaction.dart';
+import 'package:medicine_manager/features/medicine/presentation/pages/expired.dart';
+import 'package:medicine_manager/features/medicine/presentation/pages/medicines.dart';
+import 'package:medicine_manager/features/medicine/presentation/pages/orders.dart';
+import 'package:medicine_manager/features/medicine/presentation/pages/out_of_stock.dart';
+import 'package:medicine_manager/features/medicine/presentation/pages/sales.dart';
+import 'package:medicine_manager/features/medicine/presentation/pages/vendor.dart';
 import 'package:medicine_manager/features/medicine/presentation/widgets/floating_action_button.dart';
 
 class MedicinePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 6,
       child: SafeArea(
         child: Scaffold(
           resizeToAvoidBottomPadding: true,
           appBar: AppBar(
             bottom: TabBar(
+              isScrollable: true,
               tabs: [
                 Tab(
-                  text: 'Dashboard',
+                  text: 'Out of Stock',
                 ),
                 Tab(
-                  text: 'Statistics',
+                  text: 'Expired',
                 ),
                 Tab(
-                  text: 'Transaction',
+                  text: 'Sales',
+                ),
+                Tab(
+                  text: 'Orders',
+                ),
+                Tab(
+                  text: 'Medicines',
+                ),
+                Tab(
+                  text: 'Vendors',
                 ),
               ],
             ),
@@ -36,9 +49,12 @@ class MedicinePage extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              Dashboard(),
-              Transaction(),
-              Statistics(),
+              OutOfStock(),
+              Expired(),
+              Sales(),
+              Orders(),
+              Medicines(),
+              Vendors(),
             ],
           ),
           floatingActionButton: CustomActionButton(),
