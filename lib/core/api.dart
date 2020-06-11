@@ -113,6 +113,11 @@ query {
     medicines{
       id,
       name
+      price
+      quantity
+      minimumQuantity
+      isShort
+      hasExpired
     }
   }
 }

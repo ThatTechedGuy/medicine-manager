@@ -6,8 +6,7 @@ class Medicines extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Query(
-        options:
-            QueryOptions(documentNode: gql(medicines), pollInterval: 1),
+        options: QueryOptions(documentNode: gql(medicines), pollInterval: 1),
         builder: (QueryResult result,
             {VoidCallback refetch, FetchMore fetchMore}) {
           return Center(
@@ -32,57 +31,92 @@ class TaskList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: this.list.length,
-      itemBuilder: (context, index) {
-        final medicine = this.list[index];
-        // return Column(
-        //   children: [
-        //     Text(medicine['quantity'].toString()),
-        //     Text(medicine['id'].toString()),
-        //     Text(medicine['name'].toString()),
-        //     Text(medicine['price'].toString()),
-        //   ],
-        // );
-        return Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.0),
-            color: Colors.grey[200],
-          ),
-          margin: EdgeInsets.all(3.0),
-          padding: const EdgeInsets.all(8.0),
+    return Column(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(medicine['name'].toString(),
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300)),
+            children: <Widget>[
+              Text(
+                'Id',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              Text(
+                'Medicine Name',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
               Row(
-                children: [
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
                   Text(
-                    '-' + medicine['quantity'].toString(),
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold),
+                    'Quantity',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   Container(
-                    width: 100.0,
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      "+\$" +
-                          (medicine['price'] * medicine['quantity']).toString(),
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.green,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                      child: Text(
+                        'Price',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      width: 100,
+                      alignment: Alignment.centerRight),
                 ],
-              ),
+              )
             ],
           ),
-        );
-      },
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.8,
+          child: ListView.builder(
+            itemCount: this.list.length,
+            itemBuilder: (context, index) {
+              final medicine = this.list[index];
+              return Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.0),
+                  color: Colors.grey[200],
+                ),
+                margin: EdgeInsets.all(3.0),
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(medicine['id'].toString()),
+                    Text(medicine['name'].toString(),
+                        style: TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.w300)),
+                    Row(
+                      children: [
+                        Text(
+                          medicine['quantity'].toString(),
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                          width: 100.0,
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            "\$" +
+                                (medicine['price'] * medicine['quantity'])
+                                    .toString(),
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }
